@@ -1,0 +1,49 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #313a48;
+}
+
+
+#frame {
+  display: block;
+  margin: 0px auto;
+
+}
+
+
+#display {
+  grid-column: 1/5;
+
+  background-color: orange;
+  font-size: 2em;
+  border-radius: 10px;
+  text-align: right;
+}
+
+
+#pad {
+  width: 400px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+}
+
+#equals {
+  grid-column: 1/5;
+}
+
+
+#pad button {
+  background-color: #f4dbbf;
+  border: none;
+  font-size: 2em;
+  border-radius: 10px;
+
+}
+
+#pad button:focus {
+  outline:0; /* avoids blue shadow when clicking on button */
+}
