@@ -18,16 +18,58 @@ let pad = {
   'equals': '='}
 
 let operation = [];
+let current = [];
 
 
 document.addEventListener('click', function(e) {
-  for (let word of Object.keys(pad)) {
-    if (document.getElementById(word).contains(e.target)) {
-      operation.push(pad[word]);
-      if (word == 'clear') {
-        operation = [];
+  for (let key of Object.keys(pad)) {
+    if (document.getElementById(key).contains(e.target)) {
+      switch (key) {
+        case 'zero':
+        case 'one':
+        case 'two':
+        case 'three':
+        case 'four':
+        case 'five':
+        case 'six':
+        case 'seven':
+        case 'eight':
+        case 'nine':
+          operation.push(pad[key])
+          current.push(pad[key])
+          break;
+
+        case 'decimal':
+          if (current.includes('.')) {
+            break
+          } else {
+            operation.push(pad[key])
+            current.push(pad[key])
+          }
+          break;
+
+        case 'divide':
+        case 'substract':
+        case 'multiply':
+        case 'add':
+          operation.push(pad[key])
+          current = []
+          break;
+
+        case 'clear':
+          operation = []
+          current = []
+          break;
+
+        case 'equals':
+          current = [eval(operation.join(''))]
+          operation = []
+          break
+        default:
       }
-      document.getElementById('display').innerHTML = operation.join('');
+
+      document.getElementById('full-display').innerHTML = operation.join('');
+      document.getElementById('current-display').innerHTML = current.join('');
 
     }
   }
