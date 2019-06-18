@@ -1,3 +1,4 @@
+
 let pad = {
   'zero': 0,
   'one': 1,
@@ -17,11 +18,10 @@ let pad = {
   'clear': '',
   'equals': '='}
 
+
 let operation = [];
 let current = [];
 let operators = ['+', '-', '/', '*']
-
-// getElementById('id')
 
 
 document.addEventListener('click', function(e) {
@@ -30,10 +30,11 @@ document.addEventListener('click', function(e) {
       let lastKey = operation[operation.length-1]
       switch (key) {
         case 'zero':
-          if (operation.includes(0) && operation.length==1) {
-            console.log('one zero is enough');
+          /* Prevents starting with more than one '0' */
+          if (current.includes(0) && current.length==1) {
             break
           }
+
         case 'one':
         case 'two':
         case 'three':
@@ -48,19 +49,19 @@ document.addEventListener('click', function(e) {
           break;
 
         case 'decimal':
+          /* Prevents using a decimal twice in the same number */
           if (current.includes('.')) {
-            console.log('double decimal isn\'t a thing');
             break
-          } else {
-            operation.push(pad[key])
-            current.push(pad[key])
           }
+          operation.push(pad[key])
+          current.push(pad[key])
           break;
 
         case 'divide':
         case 'substract':
         case 'multiply':
         case 'add':
+          /*
           if (current.length == 0) {
             if (key == 'substract') {
               operation.push(pad[key])
@@ -68,16 +69,17 @@ document.addEventListener('click', function(e) {
               break
             }
           }
+          */
 
+          /* Prevents starting with an operator */
           if (operation.length == 0) {
-            console.log('you might want to type a number first');
             break
           }
 
+          /* Prevents two operators in a row */
           if (operators.includes(lastKey)) {
             operation.pop(1)
             operation.push(pad[key])
-            console.log('you need to pick just one operator');
             current = []
             break;
           }
@@ -89,12 +91,13 @@ document.addEventListener('click', function(e) {
         case 'clear':
           operation = []
           current = []
+          document.getElementById('current-display').innerHTML = '0'; // doesn't work
           break;
 
         case 'equals':
+          /* Prevents ending with an operator before hitting = */
           if (operators.includes(lastKey)) {
             operation.pop(1)
-            console.log('we\'ve ignored that last ' + lastKey);
           }
 
           current = [eval(operation.join(''))]
