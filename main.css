@@ -9,7 +9,11 @@ body {
 #frame {
   display: block;
   margin: 0px auto;
+  border: 3px solid #f4dbbf;
+  border-radius: 20px;
+  padding: 0px 20px 30px 20px;
 
+  font-family: sans-serif;
 }
 
 #pad {
@@ -17,25 +21,41 @@ body {
   height: 600px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1em;
+  grid-gap: 1.3em;
 }
 
 
-#full-display, #current-display {
+#display {
   grid-column: 1/5;
-  font-size: 2em;
+
+
   border-radius: 10px;
-  text-align: right;
-  background-color: #636a75;
+
+  color: #f4dbbf;
+  height: 100px;
+
+  background-color: ; /* #636a75 */
+  /* border: 1px yellow dotted; */
 }
 
 #full-display {
-  height: 60px;
+  height: 40px;
+  margin-top: 30px;
+
+  font-size: 2em;
+  text-align: left;
+  margin-left: 20px;
+  /* background-color: green; */
 }
 
 #current-display {
-  height: 80px;
-  background-color:  #929fa2; /* #d39477 #929fa2 */
+  height: 70px;
+  margin-top: 0px;
+  font-size: 3em;
+  text-align: right;
+  margin-RIGHT: 20px;
+
+  /* background-color:  red;  #929fa2 #d39477 #929fa2 */
 }
 
 
@@ -48,8 +68,9 @@ body {
 #pad button {
   background-color: #f4dbbf;
   border: none;
+  border-radius: 40px;
   font-size: 2em;
-  border-radius: 10px;
+  color: #313a48;
 
 }
 
