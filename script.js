@@ -22,12 +22,12 @@ let pad = {
 let operation = [];
 let current = [];
 let operators = ['+', '-', '/', '*']
-
+let lastKey;
 
 document.addEventListener('click', function(e) {
   for (let key of Object.keys(pad)) {
     if (document.getElementById(key).contains(e.target)) {
-      let lastKey = operation[operation.length-1]
+      // let lastKey = operation[operation.length-1]
       switch (key) {
         case 'zero':
           /* Prevents starting with more than one '0' */
@@ -60,11 +60,20 @@ document.addEventListener('click', function(e) {
           break;
 
         case 'substract':
+        if (lastKey == '-') {
+          console.log('mip mip');
+
+          // current = []
+
+          break;
+        }
+        
           if (current.length == 0) {
             operation.push(pad[key])
             current.push(pad[key])
             break
           }
+
 
 
           // still bugs when clicking on '-' several times in a row
@@ -118,7 +127,7 @@ document.addEventListener('click', function(e) {
         document.getElementById('current-display').innerHTML = current.join('');
 
       }
-
+      lastKey = pad[key]
     }
   }
 });
