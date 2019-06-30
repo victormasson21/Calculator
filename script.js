@@ -109,7 +109,8 @@ document.addEventListener('click', function(e) {
 
         }
         current = [eval(operation.join(''))]
-        operation.push(pad[key])
+        operation = [eval(operation.join(''))]
+        // operation.push(pad[key])
         document.getElementById('full-display').innerHTML = operation.join('');
         document.getElementById('current-display').innerHTML = current.join('');
 
