@@ -44,6 +44,7 @@ document.addEventListener('click', function(e) {
         case 'seven':
         case 'eight':
         case 'nine':
+          /* updates both arrays */
           operation.push(pad[key])
           current.push(pad[key])
           break;
@@ -53,29 +54,30 @@ document.addEventListener('click', function(e) {
           if (current.includes('.')) {
             break
           }
+          /* updates both arrays */
           operation.push(pad[key])
           current.push(pad[key])
           break;
 
-        case 'divide':
         case 'substract':
+          if (current.length == 0) {
+            operation.push(pad[key])
+            current.push(pad[key])
+            break
+          }
+
+
+          // still bugs when clicking on '-' several times in a row
+          // doesn't allow double negative '--' > doesn't really have to..?
+
+
+        case 'divide':
         case 'multiply':
         case 'add':
-          /*
-          if (current.length == 0) {
-            if (key == 'substract') {
-              operation.push(pad[key])
-              current.push(pad[key])
-              break
-            }
-          }
-          */
-
           /* Prevents starting with an operator */
           if (operation.length == 0) {
             break
           }
-
           /* Prevents two operators in a row */
           if (operators.includes(lastKey)) {
             operation.pop(1)
@@ -83,7 +85,7 @@ document.addEventListener('click', function(e) {
             current = []
             break;
           }
-
+          /* updates both arrays */
           operation.push(pad[key])
           current = []
           break;
@@ -91,6 +93,7 @@ document.addEventListener('click', function(e) {
 
       }
 
+      /* updates both displays based on new arrays */
       document.getElementById('full-display').innerHTML = operation.join('');
       document.getElementById('current-display').innerHTML = current.join('');
 
