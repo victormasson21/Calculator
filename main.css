@@ -27,15 +27,14 @@ body {
 
 #display {
   grid-column: 1/5;
-
-
   border-radius: 10px;
-
-  color: #f4dbbf;
   height: 100px;
+  color: #f4dbbf;
+
+
 
   background-color: ; /* #636a75 */
-  /* border: 1px yellow dotted; */
+  border: 1px yellow dotted;
 }
 
 #full-display {
@@ -53,8 +52,9 @@ body {
   margin-top: 0px;
   font-size: 3em;
   text-align: right;
-  margin-RIGHT: 20px;
+  margin-right: 20px;
 
+  overflow-x: hidden;
   /* background-color:  red;  #929fa2 #d39477 #929fa2 */
 }
 
