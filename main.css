@@ -8,7 +8,7 @@ body {
 
 #frame {
   display: block;
-  margin: 0px auto;
+  margin: 30px auto;
   border: 3px solid #f4dbbf;
   border-radius: 20px;
   padding: 0px 20px 30px 20px;
@@ -31,10 +31,6 @@ body {
   height: 100px;
   color: #f4dbbf;
 
-
-
-  background-color: ; /* #636a75 */
-  border: 1px yellow dotted;
 }
 
 #full-display {
@@ -59,19 +55,38 @@ body {
 }
 
 
-
-#equals {
-  grid-column: 1/5;
-}
-
-
-#pad button {
+button {
   background-color: #f4dbbf;
   border: none;
   border-radius: 40px;
   font-size: 2em;
   color: #313a48;
 
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: opacity 0.8s linear;
+}
+
+#equals {
+  grid-column: 1/5;
+}
+
+#equals, #clear {
+  color: #f4dbbf;
+  background-color: #313a48;
+  border: 2px #f4dbbf solid;
+}
+
+#equals:hover, #clear:hover {
+  opacity: 1;
+  background-color: #d39477;
+  transition: background-color 0.3s linear;
+}
+
+#divide, #multiply, #add, #substract  {
+  background-color: #d39477;
 }
 
 #pad button:focus {
