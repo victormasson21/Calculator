@@ -88,26 +88,32 @@ document.addEventListener('click', function(e) {
           current = []
           break;
 
-        case 'clear':
-          operation = []
-          current = []
-          document.getElementById('current-display').innerHTML = '0'; // doesn't work
-          break;
 
-        case 'equals':
-          /* Prevents ending with an operator before hitting = */
-          if (operators.includes(lastKey)) {
-            operation.pop(1)
-          }
-
-          current = [eval(operation.join(''))]
-          operation.push(pad[key])
-          break
-        default:
       }
 
       document.getElementById('full-display').innerHTML = operation.join('');
       document.getElementById('current-display').innerHTML = current.join('');
+
+      if (key == 'clear') {
+        operation = []
+        current = []
+        document.getElementById('full-display').innerHTML = operation.join('');
+        document.getElementById('current-display').innerHTML = '0'; // doesn't work
+      }
+
+
+      if (key == 'equals') {
+        /* Prevents ending with an operator before hitting = */
+        if (operators.includes(lastKey)) {
+          operation.pop(1)
+
+        }
+        current = [eval(operation.join(''))]
+        operation.push(pad[key])
+        document.getElementById('full-display').innerHTML = operation.join('');
+        document.getElementById('current-display').innerHTML = current.join('');
+
+      }
 
     }
   }
